@@ -1,4 +1,4 @@
-package com.feliperbleite.recipedecider.domain;
+package com.feliperbleite.mealplanner.domain;
 
 import lombok.Data;
 

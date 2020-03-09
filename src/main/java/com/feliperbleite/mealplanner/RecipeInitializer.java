@@ -1,7 +1,6 @@
-package com.feliperbleite.recipedecider;
+package com.feliperbleite.mealplanner;
 
-import com.feliperbleite.recipedecider.domain.Recipe;
-import com.feliperbleite.recipedecider.repositories.RecipeRepository;
+import com.feliperbleite.mealplanner.repositories.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

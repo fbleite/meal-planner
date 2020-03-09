@@ -1,4 +1,4 @@
-package com.feliperbleite.recipedecider.exceptions;
+package com.feliperbleite.mealplanner.exceptions;
 
 public class RecipeNotFoundException extends RuntimeException {
     public RecipeNotFoundException(long id) {

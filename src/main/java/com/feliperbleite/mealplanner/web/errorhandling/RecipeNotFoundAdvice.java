@@ -1,6 +1,6 @@
-package com.feliperbleite.recipedecider.web.errorhandling;
+package com.feliperbleite.mealplanner.web.errorhandling;
 
-import com.feliperbleite.recipedecider.exceptions.RecipeNotFoundException;
+import com.feliperbleite.mealplanner.exceptions.RecipeNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

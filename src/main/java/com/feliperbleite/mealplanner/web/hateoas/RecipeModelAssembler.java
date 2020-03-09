@@ -1,9 +1,9 @@
-package com.feliperbleite.recipedecider.web.hateoas;
+package com.feliperbleite.mealplanner.web.hateoas;
 
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
-import com.feliperbleite.recipedecider.domain.Recipe;
-import com.feliperbleite.recipedecider.web.controllers.RecipeController;
+import com.feliperbleite.mealplanner.domain.Recipe;
+import com.feliperbleite.mealplanner.web.controllers.RecipeController;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;

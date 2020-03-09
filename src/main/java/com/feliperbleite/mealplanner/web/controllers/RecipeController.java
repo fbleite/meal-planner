@@ -1,10 +1,10 @@
-package com.feliperbleite.recipedecider.web.controllers;
+package com.feliperbleite.mealplanner.web.controllers;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
-import com.feliperbleite.recipedecider.domain.Recipe;
-import com.feliperbleite.recipedecider.exceptions.RecipeNotFoundException;
-import com.feliperbleite.recipedecider.repositories.RecipeRepository;
-import com.feliperbleite.recipedecider.web.hateoas.RecipeModelAssembler;
+import com.feliperbleite.mealplanner.domain.Recipe;
+import com.feliperbleite.mealplanner.exceptions.RecipeNotFoundException;
+import com.feliperbleite.mealplanner.repositories.RecipeRepository;
+import com.feliperbleite.mealplanner.web.hateoas.RecipeModelAssembler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
