@@ -27,55 +27,97 @@ public class RecipeController {
     @Autowired
     RecipeModelAssembler assembler;
 
-    @GetMapping("/recipes")
-    public CollectionModel<EntityModel<Recipe>> getRecipes () {
-         List<EntityModel<Recipe>> recipes = repository.findAll().stream().
-                                                map(assembler::toModel).
-                                                collect(Collectors.toList());
 
-         return new CollectionModel<>(recipes, linkTo(methodOn(RecipeController.class).getRecipes()).withSelfRel());
-    }
+  @GetMapping("/recipes")
+  public List<Recipe> getRecipes () {
+    return repository.findAll();
+  }
 
-    @PostMapping("/recipes")
-    public ResponseEntity<?> newRecipe(@RequestBody Recipe recipe) {
-        EntityModel<Recipe> entityRecipe = assembler.toModel(repository.save(recipe));
-        return ResponseEntity.created(entityRecipe.getRequiredLink(IanaLinkRelations.SELF).toUri()).
-                body(entityRecipe);
-    }
+  @PostMapping("/recipes")
+  public Recipe newRecipe(@RequestBody Recipe recipe) {
+    Recipe savedRecipe  = repository.save(recipe);
+    return savedRecipe;
+  }
 
 
-    @GetMapping("/recipes/{id}")
-    public EntityModel<Recipe> getOneRecipe(@PathVariable long id) {
-        Recipe recipe =  repository.findById(id).orElseThrow(() -> new RecipeNotFoundException(id));
-        return assembler.toModel(recipe);
-    }
+  @GetMapping("/recipes/{id}")
+  public Recipe getOneRecipe(@PathVariable long id) {
+    return repository.findById(id).orElseThrow(() -> new RecipeNotFoundException(id));
+  }
 
 
-    @PutMapping("/recipes/{id}")
-    public ResponseEntity<?> replaceRecipe(@RequestBody Recipe newRecipe, @PathVariable long id) {
-        Recipe updatedRecipe =  repository.findById(id).map(
-                recipe -> {
-                    recipe.setName(newRecipe.getName());
-                    recipe.setCategory(newRecipe.getCategory());
-                    return repository.save(recipe);
-                }
-        ).orElseGet(() -> {
-            newRecipe.setId(id);
-            return repository.save(newRecipe);
-        });
+  @PutMapping("/recipes/{id}")
+  public Recipe replaceRecipe(@RequestBody Recipe newRecipe, @PathVariable long id) {
+    Recipe updatedRecipe =  repository.findById(id).map(
+      recipe -> {
+        recipe.setName(newRecipe.getName());
+        recipe.setCategory(newRecipe.getCategory());
+        return repository.save(recipe);
+      }
+    ).orElseGet(() -> {
+      newRecipe.setId(id);
+      return repository.save(newRecipe);
+    });
+    return updatedRecipe;
 
-        EntityModel entityRecipe = assembler.toModel(updatedRecipe);
-
-        return ResponseEntity.created(entityRecipe.getRequiredLink(IanaLinkRelations.SELF).toUri()).
-                body(entityRecipe);
-
-    }
+  }
 
 
-    @DeleteMapping("/recipes/{id}")
-    public ResponseEntity<?> deleteRecipe(@PathVariable long id){
-        repository.deleteById(id);
-        return ResponseEntity.noContent().build();
-    }
+  @DeleteMapping("/recipes/{id}")
+  public void  deleteRecipe(@PathVariable long id){
+    repository.deleteById(id);
+  }
+
+
+//    @GetMapping("/recipes")
+//    public CollectionModel<EntityModel<Recipe>> getRecipes () {
+//         List<EntityModel<Recipe>> recipes = repository.findAll().stream().
+//                                                map(assembler::toModel).
+//                                                collect(Collectors.toList());
+//
+//         return new CollectionModel<>(recipes, linkTo(methodOn(RecipeController.class).getRecipes()).withSelfRel());
+//    }
+//
+//    @PostMapping("/recipes")
+//    public ResponseEntity<?> newRecipe(@RequestBody Recipe recipe) {
+//        EntityModel<Recipe> entityRecipe = assembler.toModel(repository.save(recipe));
+//        return ResponseEntity.created(entityRecipe.getRequiredLink(IanaLinkRelations.SELF).toUri()).
+//                body(entityRecipe);
+//    }
+//
+//
+//    @GetMapping("/recipes/{id}")
+//    public EntityModel<Recipe> getOneRecipe(@PathVariable long id) {
+//        Recipe recipe =  repository.findById(id).orElseThrow(() -> new RecipeNotFoundException(id));
+//        return assembler.toModel(recipe);
+//    }
+//
+//
+//    @PutMapping("/recipes/{id}")
+//    public ResponseEntity<?> replaceRecipe(@RequestBody Recipe newRecipe, @PathVariable long id) {
+//        Recipe updatedRecipe =  repository.findById(id).map(
+//                recipe -> {
+//                    recipe.setName(newRecipe.getName());
+//                    recipe.setCategory(newRecipe.getCategory());
+//                    return repository.save(recipe);
+//                }
+//        ).orElseGet(() -> {
+//            newRecipe.setId(id);
+//            return repository.save(newRecipe);
+//        });
+//
+//        EntityModel entityRecipe = assembler.toModel(updatedRecipe);
+//
+//        return ResponseEntity.created(entityRecipe.getRequiredLink(IanaLinkRelations.SELF).toUri()).
+//                body(entityRecipe);
+//
+//    }
+//
+//
+//    @DeleteMapping("/recipes/{id}")
+//    public ResponseEntity<?> deleteRecipe(@PathVariable long id){
+//        repository.deleteById(id);
+//        return ResponseEntity.noContent().build();
+//    }
 
 }
