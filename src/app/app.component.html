@@ -2,6 +2,16 @@
   <h1>
     Welcome to Meal Planner!
   </h1>
+  
+  <input #newRecipeName>
+
+
+  <input #newRecipeCategory>
+
+    <button (click)="addRecipe(newRecipeName.value, newRecipeCategory.value)">Add</button>
+<!-- 
+    <ul><li *ngFor="let hero of heroes">{{hero}}</li></ul>
+  <p>{{values}}</p> -->
   <div class="container">
     <ul>
       <li>Recipes</li>
