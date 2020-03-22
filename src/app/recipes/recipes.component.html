@@ -1,0 +1,26 @@
+<!-- <input #newRecipeName>
+
+<input #newRecipeCategory> -->
+
+<!-- <button (click)="addRecipe(newRecipeName.value, newRecipeCategory.value);
+    newRecipeName.value= '';
+    newRecipeCategory.value='' ">Add</button>
+ -->
+
+ <mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <mat-icon class="title-icon" routerLink="" >arrow_back</mat-icon>
+    <span style="margin: auto;">Manage Recipes</span>
+    <mat-icon class="title-icon" routerLink="" >search</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+ <mat-list>
+  <mat-list-item *ngFor="let recipe of recipes">
+    <div mat-line>{{recipe.name}}</div>
+    <div mat-line> {{recipe.category}} </div>
+  </mat-list-item>
+ </mat-list>
+
+
+ <button mat-fab color="primary" id="add-button" > <mat-icon>add</mat-icon></button>

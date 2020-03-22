@@ -1,18 +1,10 @@
-<div style="text-align:center"class="container">
-  <h1>
-    Welcome to Meal Planner!
-  </h1>
+<mat-toolbar color="primary" >
+  <mat-toolbar-row routerLink="">
+    <mat-icon class="title-icon">local_dining</mat-icon>
+    <span >Meal Planner</span>
+  </mat-toolbar-row>
+</mat-toolbar>
 
-  <input #newRecipeName>
-
-  <input #newRecipeCategory>
-
-    <button (click)="addRecipe(newRecipeName.value, newRecipeCategory.value); newRecipeName.value= ''; newRecipeCategory.value='' " >Add</button>
-
-  <div class="container">
-    <ul>
-      <li>Recipes</li>
-      <li *ngFor="let recipe of recipes">{{recipe.name}} - {{recipe.category}}</li>
-    </ul>
-  </div>
+<div style="text-align: center;" class="container">
+  <router-outlet></router-outlet>
 </div>
