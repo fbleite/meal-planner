@@ -1,0 +1,29 @@
+<div *ngIf="data.action=='add' || data.action=='edit'">
+    <div mat-dialog-content>
+      <p>Add new recipe</p>
+      <mat-form-field>
+        <mat-label>Recipe Name</mat-label>
+        <input matInput [(ngModel)]="data.recipe.name">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Recipe Category</mat-label>
+        <input matInput [(ngModel)]="data.recipe.category">
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="onCancelClick()">Cancel</button>
+      <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Save</button>
+    </div>
+  </div>
+
+  <div *ngIf="data.action=='delete'">
+    <div mat-dialog-content>
+        <p>Are you sure you want to delete the recipe</p>
+        <p> {{data.recipe.name}} </p>
+        <p> {{data.recipe.category}} </p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="onCancelClick()">Cancel</button>
+      <button mat-button color="warn" [mat-dialog-close]="data" cdkFocusInitial>DELETE</button>
+    </div>
+  </div>

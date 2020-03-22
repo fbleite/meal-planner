@@ -7,20 +7,42 @@
     newRecipeCategory.value='' ">Add</button>
  -->
 
- <mat-toolbar color="primary">
+<mat-toolbar color="primary">
   <mat-toolbar-row>
-    <mat-icon class="title-icon" routerLink="" >arrow_back</mat-icon>
+    <mat-icon class="title-icon" routerLink="">arrow_back</mat-icon>
     <span style="margin: auto;">Manage Recipes</span>
-    <mat-icon class="title-icon" routerLink="" >search</mat-icon>
+    <mat-icon class="title-icon" routerLink="">search</mat-icon>
   </mat-toolbar-row>
 </mat-toolbar>
 
- <mat-list>
-  <mat-list-item *ngFor="let recipe of recipes">
-    <div mat-line>{{recipe.name}}</div>
-    <div mat-line> {{recipe.category}} </div>
-  </mat-list-item>
- </mat-list>
+<mat-list class="recipe-list">
+  <div *ngFor="let recipe of recipes">
+    <mat-list-item>
+      <div mat-line>{{recipe.name}}</div>
+      <div class="recipe-action-button">
+        <button mat-icon-button >
+          <button mat-icon-button [matMenuTriggerFor]="menu" >
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="openEditDialog(recipe)">
+              <mat-icon>edit</mat-icon>
+              <span>Edit</span>
+            </button>
+            <button mat-menu-item (click)="openDeleteDialog(recipe)">
+              <mat-icon>delete</mat-icon>
+              <span>Delete</span>
+            </button>
+          </mat-menu>
+        </button>
+      </div>
+      <div mat-line> {{recipe.category}} </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </div>
+</mat-list>
 
 
- <button mat-fab color="primary" id="add-button" > <mat-icon>add</mat-icon></button>
+<button mat-fab color="primary" id="add-button" (click)="openAddDialog()">
+  <mat-icon>add</mat-icon>
+</button>
