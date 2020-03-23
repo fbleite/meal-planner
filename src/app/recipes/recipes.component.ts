@@ -98,7 +98,7 @@ export class RecipesComponent implements OnInit {
   }
 
   deleteRecipe(recipeToBeDeleted: Recipe) {
-    this.recipesService.deleteRecipe(recipeToBeDeleted).subscribe(deletedRecipe =>
-      this.recipes = this.recipes.filter(r => r !== deletedRecipe))
+    this.recipes = this.recipes.filter(r => r !== recipeToBeDeleted);
+    this.recipesService.deleteRecipe(recipeToBeDeleted).subscribe();
   }
 }
