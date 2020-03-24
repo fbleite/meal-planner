@@ -1,6 +1,7 @@
 <div *ngIf="data.action=='add' || data.action=='edit'">
     <div mat-dialog-content>
-      <p>Add new recipe</p>
+      <p *ngIf="data.action=='add' ">Add new recipe</p>
+      <p *ngIf="data.action=='edit' ">Edit recipe</p>
       <mat-form-field>
         <mat-label>Recipe Name</mat-label>
         <input matInput [(ngModel)]="data.recipe.name">

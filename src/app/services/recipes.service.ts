@@ -10,7 +10,7 @@ import { tap, catchError } from 'rxjs/operators';
 })
 export class RecipesService {
 
-  private recipesUrl: string = 'recipes';
+  private recipesUrl: string = 'api/recipes';
   recipes: Recipe [] = [];
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
