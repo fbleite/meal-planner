@@ -7,10 +7,9 @@ import { HttpClient } from '@angular/common/http'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    title = 'client';
+    title = 'Meal Planner';
     
     constructor() {
     
     }
-
 }
