@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+
 import lombok.extern.slf4j.Slf4j;
 
 
@@ -20,39 +21,47 @@ public class RecipeInitializer {
     @PostConstruct
     public void init() {
 
-      if (repository.findAll().isEmpty()) {
-        repository.save(new Recipe("Mexidão", "Salsicha"));
-        repository.save(new Recipe("Carbonara", "Macarrão"));
-        repository.save(new Recipe("Bolognese", "Macarrão"));
-        repository.save(new Recipe("Arroz Feijão bife e brocolis", "Sei La"));
-        repository.save(new Recipe("Tacos", "Sei La"));
+        if (repository.findAll().isEmpty()) {
+            repository.save(new Recipe("Mexidão", "Salsicha"));
+            repository.save(new Recipe("Carbonara", "Macarrão"));
+            repository.save(new Recipe("Bolognese", "Macarrão"));
+            repository.save(new Recipe("Arroz Feijão bife e brocolis", "Sei La"));
+            repository.save(new Recipe("Tacos", "Sei La"));
+            repository.save(new Recipe("aaa", "Macarrão"));
+            repository.save(new Recipe("bbb", "pasta"));
+            repository.save(new Recipe("ccc", "Sei La"));
+            repository.save(new Recipe("ddd", "Salsicha"));
+            repository.save(new Recipe("eee", "Chicken"));
+            repository.save(new Recipe("fff", "Macarrão"));
+            repository.save(new Recipe("ggg", "Macarrão"));
+            repository.save(new Recipe("hhh", "Macarrão"));
 
 
-        log.info("----- fetching all recipes -----");
-        log.info("--------------------------------");
+            log.info("----- fetching all recipes -----");
+            log.info("--------------------------------");
 
-        for (Recipe recipe : repository.findAll()) {
+            for (Recipe recipe : repository.findAll()) {
+                log.info(recipe.toString());
+            }
+            log.info("");
+
+
+            log.info("----- fetching recipe by Id -----");
+            log.info("--------------------------------");
+            Recipe recipe = repository.findById(1L).get();
             log.info(recipe.toString());
+            log.info("");
+
+
+            log.info("----- fetching recipe by category -----");
+            log.info("--------------------------------");
+            for (Recipe macarrao : repository.findByCategory("Macarrão")) {
+                log.info(macarrao.toString());
+            }
+            log.info("");
+        } else {
+            log.info("Database already populated");
         }
-        log.info("");
-
-
-        log.info("----- fetching recipe by Id -----");
-        log.info("--------------------------------");
-        Recipe recipe = repository.findById(1L).get();
-        log.info(recipe.toString());
-        log.info("");
-
-
-        log.info("----- fetching recipe by category -----");
-        log.info("--------------------------------");
-        for (Recipe macarrao: repository.findByCategory("Macarrão")) {
-            log.info(macarrao.toString());
-        }
-        log.info("");
-      } else {
-        log.info("Database already populated");
-      }
 
     }
 }

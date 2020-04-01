@@ -9,11 +9,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class RecipedeciderApplication {
 
 
-	private static final Logger log = LoggerFactory.getLogger(RecipedeciderApplication.class);
+    private static final Logger log = LoggerFactory.getLogger(RecipedeciderApplication.class);
 
-	public static void main(String[] args) {
-		SpringApplication.run(RecipedeciderApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(RecipedeciderApplication.class, args);
+    }
 
 
 }

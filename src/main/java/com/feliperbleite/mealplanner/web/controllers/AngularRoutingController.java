@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class AngularRoutingController {
     @GetMapping(value = "/**/{path:[^\\.]*}")
     public String forward() {
-      return "forward:/";
+        return "forward:/";
     }
 }

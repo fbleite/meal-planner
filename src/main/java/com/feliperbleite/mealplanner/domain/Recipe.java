@@ -17,7 +17,8 @@ public class Recipe {
     private String name;
     private String category;
 
-    protected Recipe() {}
+    protected Recipe() {
+    }
 
     public Recipe(String name, String category) {
         this.name = name;
