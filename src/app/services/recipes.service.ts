@@ -11,13 +11,12 @@ import { tap, catchError } from 'rxjs/operators';
 export class RecipesService {
 
   private recipesUrl: string = 'api/recipes';
-  recipes: Recipe [] = [];
+  
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
   constructor(private http: HttpClient) { 
-    RECIPES.forEach(recipe => this.recipes.push(recipe));
   }
  
   

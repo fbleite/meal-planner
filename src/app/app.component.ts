@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { Component, OnInit } from '@angular/core';
+import { IconService } from './services/icon.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,9 @@ import { HttpClient } from '@angular/common/http'
 export class AppComponent {
     title = 'Meal Planner';
     
-    constructor() {
+    constructor(private iconService: IconService){}
     
+    ngOnInit(): void {
+        this.iconService.registerIcons();
     }
 }
